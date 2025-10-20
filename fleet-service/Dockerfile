@@ -11,6 +11,6 @@ RUN chmod +x ./gradlew && ./gradlew bootJar --no-daemon
 # Runtime stage
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
-COPY --from=builder /app/build/libs/user-service-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=builder /app/build/libs/*.jar app.jar
 EXPOSE 8082
 ENTRYPOINT ["java","-jar","app.jar"]

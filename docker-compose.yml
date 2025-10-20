@@ -1,0 +1,42 @@
+services:
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    ports:
+      - "8080:8080"
+
+  inventory-service:
+    build: ./inventory-service
+    container_name: inventory-service
+    ports:
+      - "8081:8081"
+
+  fleet-service:
+    build: ./fleet-service
+    container_name: fleet-service
+    ports:
+      - "8082:8082"
+
+  expense-service:
+    build: ./expense-service
+    container_name: expense-service
+    ports:
+      - "8083:8083"
+
+  notification-service:
+    build: ./notification-service
+    container_name: notification-service
+    ports:
+      - "8084:8084"
+
+  gateway-service:
+    build: ./gateway-service
+    container_name: gateway-service
+    ports:
+      - "8085:8085"
+    depends_on:
+      - user-service
+      - inventory-service
+      - fleet-service
+      - expense-service
+      - notification-service
